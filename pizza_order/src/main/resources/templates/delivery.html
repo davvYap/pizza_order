@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Delivery</title>
+  </head>
+  <body class="center">
+    <h1>Delivery details</h1>
+    <form action="" method="post" data-th-action="@{/pizza/order}" data-th-object="${delivery}">
+      <table class="table" style="width: 30%">
+        <tr>
+          <td>Name</td>
+          <td>
+            <input type="text" size="30" placeholder="your name" data-th-field="*{name}" />
+            <div data-th-if="${#fields.hasErrors('name')}">
+              <span data-th-errors="*{name}" class="error"></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td>
+            <input type="text" size="30" placeholder="your address" data-th-field="*{address}" />
+            <div data-th-if="${#fields.hasErrors('address')}">
+              <span data-th-errors="*{address}" class="error"></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td>
+            <input type="text" size="30" placeholder="your phone" data-th-field="*{phoneNum}" />
+            <div data-th-if="${#fields.hasErrors('phoneNum')}">
+              <span data-th-errors="*{phoneNum}" class="error"></span>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Rush</td>
+          <td>
+            <input type="checkbox" data-th-field="*{rush}" />
+          </td>
+        </tr>
+        <tr>
+          <td>Comments</td>
+          <td>
+            <textarea
+              cols="30"
+              rows="10"
+              placeholder="your comments"
+              data-th-field="*{comments}"></textarea>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button type="submit" formmethod="get" formaction="/">Cancel Order</button>
+          </td>
+          <td>
+            <button type="submit">Place Order</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

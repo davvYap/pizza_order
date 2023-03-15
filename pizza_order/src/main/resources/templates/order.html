@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>Order</title>
+  </head>
+  <body class="center">
+    <h1>Delivery Details</h1>
+    <table class="table" data-th-object="${order}">
+      <tr>
+        <td>Order Number:</td>
+        <td>
+          <a
+            data-th-href="@{/order/{orderId}(orderId=${order.orderId})}"
+            data-th-text="${order.getOrderId()}"></a>
+        </td>
+      </tr>
+      <tr>
+        <td>Your order will be delivery to</td>
+        <td><span data-th-text="${order.getDelivery().getAddress()}"></span></td>
+      </tr>
+      <tr>
+        <td>Pizza Cost</td>
+        <td data-th-text="'$' + ${order.getTotalCost()}"></td>
+      </tr>
+      <tr>
+        <td>Rush</td>
+        <td data-th-text="${order.getDelivery().getRush()} ? '$2' : '$0' "></td>
+      </tr>
+      <tr>
+        <td>Total Cost</td>
+        <td data-th-text="'$' + ${order.getTotalPizzaCost()}"></td>
+      </tr>
+    </table>
+    <br />
+    <button>
+      <a
+        data-th-href="@{/pizza/orderjs/{orderId}(orderId=${order.orderId})}"
+        data-th-text="Details"></a>
+    </button>
+  </body>
+</html>

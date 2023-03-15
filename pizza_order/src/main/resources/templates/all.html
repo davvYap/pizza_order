@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>All details</title>
+  </head>
+  <body class="center">
+    <h1>Order Details</h1>
+    <table class="table" data-th-object="${order}">
+      <tr>
+        <td>Order Id</td>
+        <td>
+          <a
+            data-th-href="@{/order/{orderId}(orderId=${order.orderId})}"
+            data-th-text="${order.orderId}"></a>
+        </td>
+      </tr>
+      <tr>
+        <td>Name</td>
+        <td data-th-text="${order.getCustomerName()}"></td>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td data-th-text="${order.getDelivery().getAddress()}"></td>
+      </tr>
+      <tr>
+        <td>Phone</td>
+        <td data-th-text="${order.getDelivery().getPhoneNum()}"></td>
+      </tr>
+      <tr>
+        <td>Rush</td>
+        <td data-th-text="${order.getDelivery().getRush()} ? 'Yes' : 'No'"></td>
+      </tr>
+      <tr>
+        <td>Comments</td>
+        <td data-th-text="${order.getDelivery().getComments()}"></td>
+      </tr>
+      <tr>
+        <td>Pizza</td>
+        <td data-th-text="${order.getPizzaName()}"></td>
+      </tr>
+      <tr>
+        <td>Size</td>
+        <td data-th-text="${order.getPizza().getSize()}"></td>
+      </tr>
+      <tr>
+        <td>Quantity</td>
+        <td data-th-text="${order.getPizza().getQuantity()}"></td>
+      </tr>
+      <tr>
+        <td>Total Cost</td>
+        <td data-th-text="${order.getTotalPizzaCost()}"></td>
+      </tr>
+    </table>
+  </body>
+</html>
